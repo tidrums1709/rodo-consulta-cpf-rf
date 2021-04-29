@@ -27,11 +27,7 @@ public class App {
 			 * (Usuário 'sa' sem senha 
 			 */
 			
-			/*
-			 * 
-			 * Implementar a partir daqui!
-			 * 
-			 */
+
 			//Dados Requisicao
 
 			String cpf = JOptionPane.showInputDialog("digite o cpf");
