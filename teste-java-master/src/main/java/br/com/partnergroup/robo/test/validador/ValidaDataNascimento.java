@@ -9,7 +9,7 @@ public class ValidaDataNascimento implements ValidaTexto {
     @Override
     public void validarTexto(String texto, Formulario formulario) {
 
-        Matcher matcher = Pattern.compile("Data de Nascimento: [0-9]{2}+\\/[0-9]{2}+\\/[0-9]{4}").matcher(texto);
+        Matcher matcher = Pattern.compile("Data de Nascimento: [0-9]{2}\\/[0-9]{2}\\/[0-9]{4}").matcher(texto);
 
         if(matcher.find()){
             String data = matcher.group();

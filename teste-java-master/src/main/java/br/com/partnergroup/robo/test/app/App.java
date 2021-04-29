@@ -31,11 +31,11 @@ public class App {
 			//Dados Requisicao
 
 			String cpf = JOptionPane.showInputDialog("digite o cpf");
-			if(!cpf.matches("[0-9]{3}+.{0,1}[0-9]{3}+.{0,1}[0-9]{3}+-{0,1}[0-9]{2}")){
+			if(!cpf.matches("[0-9]{3}\\.{0,1}[0-9]{3}\\.{0,1}[0-9]{3}\\-{0,1}[0-9]{2}")){
 				throw new RuntimeException("Valor de CPF invalido");
 			}
 			String dtnascimento = JOptionPane.showInputDialog("digite a data de nascimento no formato dd/mm/aaaa");
-			if(!dtnascimento.matches("[0-9]{2}+\\/[0-9]{2}+\\/[0-9]{4}")){
+			if(!dtnascimento.matches("[0-9]{2}\\/[0-9]{2}\\/[0-9]{4}")){
 				throw new RuntimeException("Valor da data invalido");
 			}
 			String urlGet = "https://servicos.receita.fazenda.gov.br/servicos/cpf/consultasituacao/ConsultaPublicaSonoro.asp?CPF="+cpf+"&NASCIMENTO="+dtnascimento;
