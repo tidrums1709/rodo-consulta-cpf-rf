@@ -8,8 +8,12 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class GetService{
 
@@ -18,12 +22,16 @@ public class GetService{
         HttpGet httpGet = new HttpGet(url);
         CloseableHttpResponse response = httpclient.execute(httpGet);
 
-            System.out.println(response.getStatusLine());
-            HttpEntity entity = response.getEntity();
-            Document document = Jsoup.parse(EntityUtils.toString(response.getEntity()));
-            String imgCaptcha = document.getElementById("imgCaptcha").toString();
-            String img64 = imgCaptcha.substring(69, imgCaptcha.length() - 3);
-            EntityUtils.consume(entity);
+        System.out.println(response.getStatusLine());
+        HttpEntity entity = response.getEntity();
+        Document document = Jsoup.parse(EntityUtils.toString(response.getEntity()));
+
+        Element img = document.getElementById("imgCaptcha");
+        String imgCaptcha = img.attr("src");
+
+        String img64 = imgCaptcha.replace("data:image/png;base64,", "");
+
+        EntityUtils.consume(entity);
             return img64;
 
     }

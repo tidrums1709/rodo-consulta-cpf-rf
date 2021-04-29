@@ -18,6 +18,7 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class PostService {
 
@@ -39,6 +40,9 @@ public class PostService {
             Document document = Jsoup.parse(EntityUtils.toString(response.getEntity()));
             Elements p = document.getElementsByTag("p");
             String text = p.text();
+            if(text.length() == 0){
+                throw new RuntimeException("Não foi possível obter os dados. Verifique os dados e tente novamente");
+            }
             EntityUtils.consume(entity);
             return text;
         }

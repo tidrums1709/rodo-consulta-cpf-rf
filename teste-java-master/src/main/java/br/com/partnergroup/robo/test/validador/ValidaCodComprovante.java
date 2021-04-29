@@ -9,7 +9,7 @@ public class ValidaCodComprovante implements ValidaTexto{
     @Override
     public void validarTexto(String texto, Formulario formulario) {
 
-        Matcher matcher = Pattern.compile("[A-Z0-9]{4}+\\.[A-Z0-9]{4}+\\.[A-Z0-9]{4}+\\.[A-Z0-9]{4}").matcher(texto);
+        Matcher matcher = Pattern.compile("([A-Z0-9]{4}+.){3}[A-Z0-9]{4}").matcher(texto);
 
         if(matcher.find()){
             formulario.setCodComprovante(matcher.group());
